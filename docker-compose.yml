@@ -25,9 +25,8 @@ services:
           memory: 1024M
 
 volumes:
-  postgres_data:
-    external: true    
+  postgres_data:    
 
 networks:
   dokploy-network:
-    external: true    
+    external: true
