@@ -1,1 +1,2 @@
 CREATE EXTENSION IF NOT EXISTS vector;
+CREATE DATABASE chatwoot_nestor;
