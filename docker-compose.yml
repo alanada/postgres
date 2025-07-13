@@ -5,6 +5,7 @@ services:
     image: postgres:14
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./init-data.sh:/docker-entrypoint-initdb.d/init-data.sh
     networks:
       - dokploy-network
     ports:
