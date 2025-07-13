@@ -1,25 +1,17 @@
 version: "3.7"
+
 services:
-
-## --------------------------- ORION --------------------------- ##
-
   postgres:
-    image: postgres:14 ## Versão do postgres
-
+    image: postgres:14
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
-      - dokploy-network ## Nome da rede interna
-
-    ## Descomente as linhas abaixo para uso externo
-    #ports:
-    #  - 5432:5432
-
+      - dokploy-network
+    ports:
+      - 5432:5432
     environment:
-      ## Senha do postgres 
       - POSTGRES_PASSWORD=2ee66f1cff906c19d564b8ce578a85b5
       - PG_MAX_CONNECTIONS=500
-
     deploy:
       mode: replicated
       replicas: 1
@@ -31,14 +23,12 @@ services:
           cpus: "1"
           memory: 1024M
 
-## --------------------------- ORION --------------------------- ##
-
 volumes:
   postgres_data:
     external: true
     name: postgres_data
 
 networks:
-  dokploy-network: ## Nome da rede interna
+  dokploy-network:
     external: true
-    name: dokploy-network ## Nome da rede interna
+    name: dokploy-network
