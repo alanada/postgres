@@ -2,9 +2,11 @@
 
 services:
   postgres:
-    image: postgres:16
+    image: postgres:14
     volumes:
-      - postgres_data:/var/lib/postgresql/data      
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-data.sh:/init-data.sh
+    command: ["bash", "-c", "chmod +x /init-data.sh && /init-data.sh"] # MODIFICADO
     networks:
       - dokploy-network
     ports:
@@ -24,9 +26,9 @@ services:
           memory: 1024M
 
 volumes:
-  postgres_data:    
-
+  postgres_data:
+    external: true    
 
 networks:
   dokploy-network:
-    external: true
+    external: true    
