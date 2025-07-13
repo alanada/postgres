@@ -1,4 +1,4 @@
-version: "3.7"
+#version: "3.7"
 
 services:
   postgres:
@@ -25,10 +25,8 @@ services:
 
 volumes:
   postgres_data:
-    external: true
-    name: postgres_data
+    external: true    
 
 networks:
   dokploy-network:
-    external: true
-    name: dokploy-network
+    external: true    
